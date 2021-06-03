@@ -1,16 +1,19 @@
 package utils;
 
+import lombok.Data;
 import org.python.util.PythonInterpreter;
 
 import java.io.StringWriter;
 
+@Data
 public class Jython {
-    public void interpretarPython(String archivo) {
-        try (PythonInterpreter pyInterp = new PythonInterpreter()) {
+    public String interpretarPython(String archivo) {
+        try (var py = new PythonInterpreter()) {
             StringWriter output = new StringWriter();
-            pyInterp.setOut(output);
+            py.setOut(output);
 
-            pyInterp.execfile(archivo);
+            py.execfile(archivo);
+            return output.toString().trim();
         }
     }
 }
