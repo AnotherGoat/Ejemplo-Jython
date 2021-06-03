@@ -23,8 +23,15 @@ class JythonTest {
 
     @Test
     @DisplayName("Prueba de hola mundo")
-    void interpretarPython() {
+    void holaMundoTest() {
         String salida = jython.interpretarPython("src/main/python/holamundo.py");
         assertEquals("Hola mundo", salida);
+    }
+
+    @Test
+    @DisplayName("Prueba de suma")
+    void sumarTest() {
+        String salida = jython.interpretarPython("src/main/python/sumar.py");
+        assertEquals("15\n-30\n1247.4", salida);
     }
 }
